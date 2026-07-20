@@ -35,6 +35,35 @@ $routes->group('admin', static function ($routes) {
     $routes->get('gains', 'Admin\StatisticsController::gains', ['as' => 'admin.gains']);
     $routes->get('statistics', 'Admin\StatisticsController::advanced', ['as' => 'admin.statistics']);
 
+    $routes->get('operators', 'Admin\OperatorController::index', ['as' => 'admin.operators.index']);
+    $routes->get('operators/create', 'Admin\OperatorController::create', ['as' => 'admin.operators.create']);
+    $routes->post('operators', 'Admin\OperatorController::store', ['as' => 'admin.operators.store']);
+    $routes->get('operators/(:num)/edit', 'Admin\OperatorController::edit/$1', ['as' => 'admin.operators.edit']);
+    $routes->post('operators/(:num)', 'Admin\OperatorController::update/$1', ['as' => 'admin.operators.update']);
+    $routes->post('operators/(:num)/toggle', 'Admin\OperatorController::toggle/$1', ['as' => 'admin.operators.toggle']);
+    $routes->post('operators/(:num)/delete', 'Admin\OperatorController::delete/$1', ['as' => 'admin.operators.delete']);
+
+    $routes->get('operator-prefixes', 'Admin\OperatorPrefixController::index', ['as' => 'admin.operatorPrefixes.index']);
+    $routes->get('operator-prefixes/create', 'Admin\OperatorPrefixController::create', ['as' => 'admin.operatorPrefixes.create']);
+    $routes->post('operator-prefixes', 'Admin\OperatorPrefixController::store', ['as' => 'admin.operatorPrefixes.store']);
+    $routes->get('operator-prefixes/(:num)/edit', 'Admin\OperatorPrefixController::edit/$1', ['as' => 'admin.operatorPrefixes.edit']);
+    $routes->post('operator-prefixes/(:num)', 'Admin\OperatorPrefixController::update/$1', ['as' => 'admin.operatorPrefixes.update']);
+    $routes->post('operator-prefixes/(:num)/toggle', 'Admin\OperatorPrefixController::toggle/$1', ['as' => 'admin.operatorPrefixes.toggle']);
+    $routes->post('operator-prefixes/(:num)/delete', 'Admin\OperatorPrefixController::delete/$1', ['as' => 'admin.operatorPrefixes.delete']);
+
+    $routes->get('commissions', 'Admin\InterOperatorCommissionController::index', ['as' => 'admin.commissions.index']);
+    $routes->get('commissions/create', 'Admin\InterOperatorCommissionController::create', ['as' => 'admin.commissions.create']);
+    $routes->post('commissions', 'Admin\InterOperatorCommissionController::store', ['as' => 'admin.commissions.store']);
+    $routes->get('commissions/(:num)/edit', 'Admin\InterOperatorCommissionController::edit/$1', ['as' => 'admin.commissions.edit']);
+    $routes->post('commissions/(:num)', 'Admin\InterOperatorCommissionController::update/$1', ['as' => 'admin.commissions.update']);
+    $routes->post('commissions/(:num)/toggle', 'Admin\InterOperatorCommissionController::toggle/$1', ['as' => 'admin.commissions.toggle']);
+    $routes->post('commissions/(:num)/delete', 'Admin\InterOperatorCommissionController::delete/$1', ['as' => 'admin.commissions.delete']);
+
+    $routes->get('settlements', 'Admin\SettlementController::index', ['as' => 'admin.settlements.index']);
+    $routes->get('reports', 'Admin\ReportController::index', ['as' => 'admin.reports.index']);
+    $routes->get('reports/export/pdf', 'Admin\ReportController::exportPdf', ['as' => 'admin.reports.export.pdf']);
+    $routes->get('reports/export/excel', 'Admin\ReportController::exportExcel', ['as' => 'admin.reports.export.excel']);
+
     $routes->get('customers', 'Admin\CustomerController::index', ['as' => 'admin.customers.index']);
     $routes->get('customers/(:num)', 'Admin\CustomerController::show/$1', ['as' => 'admin.customers.show']);
     $routes->post('customers/(:num)/delete', 'Admin\CustomerController::delete/$1', ['as' => 'admin.customers.delete']);
@@ -60,6 +89,7 @@ $routes->group('client', static function ($routes) {
 
         $routes->get('transfert', 'Client\TransferController::create', ['as' => 'client.transfer.create']);
         $routes->post('transfert', 'Client\TransferController::store', ['as' => 'client.transfer.store']);
+        $routes->get('transfert/preview', 'Client\TransferController::preview', ['as' => 'client.transfer.preview']);
 
         $routes->get('historique', 'Client\HistoryController::index', ['as' => 'client.history.index']);
         $routes->get('historique/(:num)', 'Client\HistoryController::show/$1', ['as' => 'client.history.show']);

@@ -14,6 +14,7 @@ class PrefixModel extends Model
     protected $useTimestamps    = false;
 
     protected $validationRules = [
+        'id'     => 'permit_empty|integer',
         'prefix' => 'required|exact_length[3]|numeric|is_unique[prefixes.prefix,id,{id}]',
     ];
 

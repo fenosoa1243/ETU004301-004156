@@ -24,7 +24,7 @@
                 </tr>
                 <tr>
                     <th class="text-muted">Montant</th>
-                    <td class="fw-semibold"><?= format_money((float) $operation['montant']) ?></td>
+                    <td class="fw-semibold"><?= format_money(abs((float) $operation['montant'])) ?></td>
                 </tr>
                 <tr>
                     <th class="text-muted">Frais</th>

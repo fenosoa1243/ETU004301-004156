@@ -14,6 +14,7 @@ class OperationTypeModel extends Model
     protected $useTimestamps    = false;
 
     protected $validationRules = [
+        'id'             => 'permit_empty|integer',
         'nom'            => 'required|min_length[2]|is_unique[operation_types.nom,id,{id}]',
         'applique_frais' => 'required|in_list[0,1]',
     ];

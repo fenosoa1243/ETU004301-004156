@@ -25,13 +25,13 @@
             <div class="fs-3 fw-bold"><?= $nb_operations ?></div>
         </div>
     </div>
-    <div class="col-md-3">
+    <!-- <div class="col-md-3">
         <div class="card card-stat p-3 h-100 d-flex flex-column justify-content-center">
             <div class="text-muted small mb-1">Envoyé / Reçu</div>
             <div class="text-danger fw-semibold"><i class="bi bi-arrow-up-short"></i> <?= format_money($total_envoye) ?></div>
             <div class="text-success fw-semibold"><i class="bi bi-arrow-down-short"></i> <?= format_money($total_recu) ?></div>
         </div>
-    </div>
+    </div> -->
 </div>
 
 <div class="row g-3 mb-4">
@@ -79,8 +79,8 @@
                         <tr>
                             <td><i class="bi <?= transaction_icon($typeName) ?> me-1"></i><?= esc($typeName) ?></td>
                             <td class="font-monospace small"><?= esc($op['reference']) ?></td>
-                            <td class="<?= $sign === '-' ? 'text-danger' : 'text-success' ?> fw-semibold">
-                                <?= $sign ?> <?= format_money((float) $op['montant']) ?>
+                            <td class="fw-semibold">
+                                <?= format_money(abs((float) $op['montant'])) ?>
                             </td>
                             <td><?= format_datetime_fr($op['created_at']) ?></td>
                         </tr>

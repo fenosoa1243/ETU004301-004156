@@ -24,9 +24,35 @@
                 <i class="bi bi-cash-coin me-2"></i> Barèmes des frais
             </a>
         </li>
+    
+        <li class="nav-item">
+            <a href="<?= site_url('admin/operators') ?>" class="nav-link <?= str_contains(uri_string(), 'admin/operators') ? 'active' : '' ?>">
+                <i class="bi bi-building me-2"></i> Opérateurs
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="<?= site_url('admin/operator-prefixes') ?>" class="nav-link <?= str_contains(uri_string(), 'admin/operator-prefixes') ? 'active' : '' ?>">
+                <i class="bi bi-telephone me-2"></i> Préfixes externes
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="<?= site_url('admin/commissions') ?>" class="nav-link <?= str_contains(uri_string(), 'admin/commissions') ? 'active' : '' ?>">
+                <i class="bi bi-percent me-2"></i> Commission inter-op
+            </a>
+        </li>
         <li class="nav-item">
             <a href="<?= site_url('admin/gains') ?>" class="nav-link <?= str_contains(uri_string(), 'admin/gains') ? 'active' : '' ?>">
                 <i class="bi bi-graph-up-arrow me-2"></i> Situation des gains
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="<?= site_url('admin/settlements') ?>" class="nav-link <?= str_contains(uri_string(), 'admin/settlements') ? 'active' : '' ?>">
+                <i class="bi bi-send-check me-2"></i> Montants à envoyer
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="<?= site_url('admin/reports') ?>" class="nav-link <?= str_contains(uri_string(), 'admin/reports') ? 'active' : '' ?>">
+                <i class="bi bi-file-earmark-bar-graph me-2"></i> Rapports
             </a>
         </li>
         <li class="nav-item">

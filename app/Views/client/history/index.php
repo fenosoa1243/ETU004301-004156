@@ -64,8 +64,8 @@
                         <td class="font-monospace small"><?= esc($op['reference']) ?></td>
                         <td><?= $op['expediteur'] ? esc(format_phone($op['expediteur'])) : '—' ?></td>
                         <td><?= $op['destinataire'] ? esc(format_phone($op['destinataire'])) : '—' ?></td>
-                        <td class="<?= $sign === '-' ? 'text-danger' : 'text-success' ?> fw-semibold">
-                            <?= $sign ?> <?= format_money((float) $op['montant']) ?>
+                        <td class="fw-semibold">
+                            <?= format_money(abs((float) $op['montant'])) ?>
                         </td>
                         <td><?= format_money((float) $op['frais']) ?></td>
                         <td><?= format_datetime_fr($op['created_at']) ?></td>

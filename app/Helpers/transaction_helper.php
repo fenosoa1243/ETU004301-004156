@@ -41,6 +41,16 @@ if (! function_exists('transaction_sign')) {
      */
     function transaction_sign(array $transaction, int $clientId): string
     {
+        $type = $transaction['type_operation'] ?? null;
+
+        if ($type === 'Dépôt') {
+            return '+';
+        }
+
+        if ($type === 'Retrait') {
+            return '-';
+        }
+
         return (int) $transaction['client_source_id'] === $clientId ? '-' : '+';
     }
 }

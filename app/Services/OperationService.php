@@ -9,12 +9,6 @@ use RuntimeException;
 
 /**
  * Service métier des opérations client : Dépôt, Retrait, Transfert.
- *
- * Toutes les opérations sont exécutées dans une transaction SQLite.
- * La mise à jour effective des soldes est déléguée au trigger SQL
- * `tg_transactions_update_soldes` (déclenché après l'insertion d'une
- * transaction) : ce service se charge de calculer et vérifier les
- * montants, frais et soldes avant/après, puis d'insérer la transaction.
  */
 class OperationService
 {
@@ -27,6 +21,7 @@ class OperationService
     protected FeeService $feeService;
     protected ReferenceService $referenceService;
     protected AuthService $authService;
+    protected OperatorDetectionService $detectionService;
 
     public function __construct()
     {
@@ -35,11 +30,9 @@ class OperationService
         $this->feeService       = new FeeService();
         $this->referenceService = new ReferenceService();
         $this->authService      = new AuthService();
+        $this->detectionService = new OperatorDetectionService();
     }
 
-    /**
-     * Effectue un dépôt sur le compte du client. Aucun frais n'est appliqué.
-     */
     public function deposit(int $clientId, float $montant): array
     {
         if ($montant <= 0) {
@@ -58,19 +51,22 @@ class OperationService
 
             $soldeAvant = (float) $client['solde'];
             $soldeApres = $soldeAvant + $montant;
-
-            $reference = $this->referenceService->generate();
+            $reference  = $this->referenceService->generate();
 
             $this->transactionModel->insert([
-                'reference'             => $reference,
-                'operation_type_id'     => self::DEPOT,
-                'client_source_id'      => $clientId,
-                'client_destination_id' => null,
-                'montant'               => $montant,
-                'frais'                 => 0,
-                'montant_total'         => $montant,
-                'solde_avant'           => $soldeAvant,
-                'solde_apres'           => $soldeApres,
+                'reference'                 => $reference,
+                'operation_type_id'         => self::DEPOT,
+                'client_source_id'          => $clientId,
+                'client_destination_id'     => null,
+                'destination_telephone'     => null,
+                'montant'                   => $montant,
+                'frais'                     => 0,
+                'commission_supplementaire' => 0,
+                'montant_total'             => $montant,
+                'is_external'               => 0,
+                'external_operator_id'      => null,
+                'solde_avant'               => $soldeAvant,
+                'solde_apres'               => $soldeApres,
             ]);
         } catch (\Throwable $e) {
             $db->transRollback();
@@ -86,10 +82,6 @@ class OperationService
         return $this->transactionModel->where('reference', $reference)->first();
     }
 
-    /**
-     * Effectue un retrait sur le compte du client. Les frais sont calculés
-     * automatiquement via le FeeService selon le barème de l'opérateur.
-     */
     public function withdraw(int $clientId, float $montant): array
     {
         if ($montant <= 0) {
@@ -118,15 +110,19 @@ class OperationService
             $reference = $this->referenceService->generate();
 
             $this->transactionModel->insert([
-                'reference'             => $reference,
-                'operation_type_id'     => self::RETRAIT,
-                'client_source_id'      => $clientId,
-                'client_destination_id' => null,
-                'montant'               => $montant,
-                'frais'                 => $fee['frais'],
-                'montant_total'         => $montantTotal,
-                'solde_avant'           => $soldeAvant,
-                'solde_apres'           => $soldeApres,
+                'reference'                 => $reference,
+                'operation_type_id'         => self::RETRAIT,
+                'client_source_id'          => $clientId,
+                'client_destination_id'     => null,
+                'destination_telephone'     => null,
+                'montant'                   => $montant,
+                'frais'                     => $fee['frais'],
+                'commission_supplementaire' => 0,
+                'montant_total'             => $montantTotal,
+                'is_external'               => 0,
+                'external_operator_id'      => null,
+                'solde_avant'               => $soldeAvant,
+                'solde_apres'               => $soldeApres,
             ]);
         } catch (\Throwable $e) {
             $db->transRollback();
@@ -143,16 +139,16 @@ class OperationService
     }
 
     /**
-     * Effectue un transfert entre le client connecté et un numéro destinataire.
-     * Le destinataire est créé automatiquement s'il n'existe pas encore.
+     * Transfert interne ou inter-opérateur selon détection automatique.
      */
-    public function transfer(int $sourceId, string $destinationTelephone, float $montant): array
+    public function transfer(int $sourceId, string $destinationTelephone, float $montant, bool $inclureFraisRetrait = false): array
     {
         if ($montant <= 0) {
             throw new RuntimeException('Le montant doit être supérieur à zéro.');
         }
 
         $destinationTelephone = normalize_phone($destinationTelephone);
+        $detection            = $this->detectionService->detect($destinationTelephone);
 
         $db = Database::connect();
         $db->transStart();
@@ -168,12 +164,10 @@ class OperationService
                 throw new RuntimeException('Impossible de transférer vers son propre numéro.');
             }
 
-            if (! $this->authService->validatePrefix($destinationTelephone)) {
-                throw new RuntimeException("Le préfixe du numéro destinataire n'est pas autorisé.");
-            }
+            $isExternal = ! $detection['is_internal'];
+            $fee        = $this->feeService->calculateDetailedFee(self::TRANSFERT, $montant, $isExternal, true, $inclureFraisRetrait);
 
             $soldeAvant   = (float) $source['solde'];
-            $fee          = $this->feeService->calculateFee(self::TRANSFERT, $montant, true);
             $montantTotal = $fee['montant_total'];
             $soldeApres   = $soldeAvant - $montantTotal;
 
@@ -181,24 +175,32 @@ class OperationService
                 throw new RuntimeException('Solde insuffisant pour effectuer ce transfert.');
             }
 
-            $destination = $this->authService->findOrCreate($destinationTelephone);
+            $reference           = $this->referenceService->generate();
+            $destinationClientId = null;
 
-            if ((int) $destination['id'] === $sourceId) {
-                throw new RuntimeException('Impossible de transférer vers son propre numéro.');
+            if ($detection['is_internal']) {
+                $destination         = $this->authService->findOrCreate($destinationTelephone);
+                $destinationClientId = (int) $destination['id'];
+
+                if ($destinationClientId === $sourceId) {
+                    throw new RuntimeException('Impossible de transférer vers son propre numéro.');
+                }
             }
 
-            $reference = $this->referenceService->generate();
-
             $this->transactionModel->insert([
-                'reference'             => $reference,
-                'operation_type_id'     => self::TRANSFERT,
-                'client_source_id'      => $sourceId,
-                'client_destination_id' => $destination['id'],
-                'montant'               => $montant,
-                'frais'                 => $fee['frais'],
-                'montant_total'         => $montantTotal,
-                'solde_avant'           => $soldeAvant,
-                'solde_apres'           => $soldeApres,
+                'reference'                 => $reference,
+                'operation_type_id'         => self::TRANSFERT,
+                'client_source_id'          => $sourceId,
+                'client_destination_id'     => $destinationClientId,
+                'destination_telephone'     => $isExternal ? $destinationTelephone : null,
+                'montant'                   => $montant,
+                'frais'                     => $fee['frais'],
+                'commission_supplementaire' => $fee['commission_supplementaire'],
+                'montant_total'             => $montantTotal,
+                'is_external'               => $isExternal ? 1 : 0,
+                'external_operator_id'      => $isExternal ? $detection['operator_id'] : null,
+                'solde_avant'               => $soldeAvant,
+                'solde_apres'               => $soldeApres,
             ]);
         } catch (\Throwable $e) {
             $db->transRollback();
@@ -211,6 +213,24 @@ class OperationService
             throw new RuntimeException('Une erreur est survenue lors du transfert.');
         }
 
-        return $this->transactionModel->where('reference', $reference)->first();
+        $transaction = $this->transactionModel->where('reference', $reference)->first();
+        $transaction['detection'] = $detection;
+
+        return $transaction;
+    }
+
+    /**
+     * Prévisualise les frais d'un transfert (interne ou externe).
+     */
+    public function previewTransfer(string $destinationTelephone, float $montant, bool $inclureFraisRetrait = false): array
+    {
+        $destinationTelephone = normalize_phone($destinationTelephone);
+        $detection            = $this->detectionService->detect($destinationTelephone);
+        $isExternal           = ! $detection['is_internal'];
+        $fee                  = $this->feeService->calculateDetailedFee(self::TRANSFERT, $montant, $isExternal, true, $inclureFraisRetrait);
+
+        return array_merge($fee, [
+            'detection' => $detection,
+        ]);
     }
 }

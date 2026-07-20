@@ -32,15 +32,44 @@
 </div>
 
 <div class="row g-3 mb-4">
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="card card-stat p-3 bg-dark text-white">
             <div class="small">Revenus des frais</div>
-            <div class="fs-2 fw-bold"><?= number_format($stats['revenu_frais'], 0, ',', ' ') ?> Ar</div>
+            <div class="fs-4 fw-bold"><?= number_format($stats['revenu_frais'], 0, ',', ' ') ?> Ar</div>
         </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-3">
         <div class="card card-stat p-3">
-            <canvas id="chartOperations" height="90"></canvas>
+            <div class="text-muted small">Opérateurs partenaires</div>
+            <div class="fs-3 fw-bold"><?= number_format($stats['nb_operateurs'], 0, ',', ' ') ?></div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card card-stat p-3">
+            <div class="text-muted small">Transferts externes</div>
+            <div class="fs-3 fw-bold"><?= number_format($stats['nb_transferts_externes'], 0, ',', ' ') ?></div>
+            <div class="text-warning small"><?= number_format($stats['montant_transferts_externes'], 0, ',', ' ') ?> Ar</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card card-stat p-3">
+            <div class="text-muted small">Commission sup. collectée</div>
+            <div class="fs-3 fw-bold text-success"><?= number_format($stats['commission_sup_collectee'], 0, ',', ' ') ?> Ar</div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-6">
+        <div class="card card-stat p-3">
+            <h6 class="mb-3">Opérations par type</h6>
+            <canvas id="chartOperations" height="120"></canvas>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card card-stat p-3">
+            <h6 class="mb-3">Transferts internes vs externes</h6>
+            <canvas id="chartTransferCompare" height="120"></canvas>
         </div>
     </div>
 </div>
@@ -52,7 +81,7 @@
             <thead>
                 <tr>
                     <th>Référence</th><th>Type</th><th>Expéditeur</th><th>Destinataire</th>
-                    <th class="text-end">Montant</th><th class="text-end">Frais</th><th>Date</th>
+                    <th>Opérateur</th><th class="text-end">Montant</th><th class="text-end">Frais</th><th>Date</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,13 +91,14 @@
                         <td><span class="badge bg-secondary"><?= esc($op['type_operation']) ?></span></td>
                         <td><?= esc($op['expediteur']) ?></td>
                         <td><?= esc($op['destinataire'] ?? '—') ?></td>
+                        <td><?= esc($op['operateur_externe'] ?? 'Interne') ?></td>
                         <td class="text-end"><?= number_format($op['montant'], 0, ',', ' ') ?></td>
-                        <td class="text-end"><?= number_format($op['frais'], 0, ',', ' ') ?></td>
+                        <td class="text-end"><?= number_format($op['frais'] + ($op['commission_supplementaire'] ?? 0), 0, ',', ' ') ?></td>
                         <td><?= esc($op['created_at']) ?></td>
                     </tr>
                 <?php endforeach; ?>
                 <?php if (empty($stats['dernieres_operations'])): ?>
-                    <tr><td colspan="7" class="text-center text-muted">Aucune opération enregistrée.</td></tr>
+                    <tr><td colspan="8" class="text-center text-muted">Aucune opération enregistrée.</td></tr>
                 <?php endif; ?>
             </tbody>
         </table>
@@ -90,6 +120,17 @@ new Chart(document.getElementById('chartOperations'), {
         }]
     },
     options: { plugins: { legend: { display: false } } }
+});
+
+new Chart(document.getElementById('chartTransferCompare'), {
+    type: 'doughnut',
+    data: {
+        labels: ['Internes', 'Externes'],
+        datasets: [{
+            data: [<?= (int) $stats['nb_transferts_internes'] ?>, <?= (int) $stats['nb_transferts_externes'] ?>],
+            backgroundColor: ['#0d6efd', '#fd7e14']
+        }]
+    }
 });
 </script>
 <?= $this->endSection() ?>

@@ -12,13 +12,24 @@ class TransactionModel extends Model
     protected $returnType       = 'array';
     protected $allowedFields    = [
         'reference', 'operation_type_id', 'client_source_id', 'client_destination_id',
-        'montant', 'frais', 'montant_total', 'solde_avant', 'solde_apres',
+        'destination_telephone', 'montant', 'frais', 'commission_supplementaire',
+        'montant_total', 'is_external', 'external_operator_id', 'solde_avant', 'solde_apres',
     ];
     protected $useTimestamps = false;
 
     public function countByType(int $operationTypeId): int
     {
         return $this->where('operation_type_id', $operationTypeId)->countAllResults();
+    }
+
+    public function countInternalTransfers(): int
+    {
+        return $this->where('operation_type_id', 3)->where('is_external', 0)->countAllResults();
+    }
+
+    public function countExternalTransfers(): int
+    {
+        return $this->where('operation_type_id', 3)->where('is_external', 1)->countAllResults();
     }
 
     public function sumByType(int $operationTypeId, string $column = 'montant'): float
