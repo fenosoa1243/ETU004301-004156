@@ -1,0 +1,85 @@
+ERROR - 2026-07-20 03:47:34 --> Unable to prepare statement: 1, no such table: clients
+in SYSTEMPATH\Database\SQLite3\Connection.php on line 164.
+ 1 SYSTEMPATH\Database\SQLite3\Connection.php(164): SQLite3->query('SELECT COUNT(*) AS `numrows`
+FROM `clients`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `clients`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `clients`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `clients`', [], false)
+ 5 SYSTEMPATH\Model.php(523): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+ 6 APPPATH\Services\StatisticsService.php(30): CodeIgniter\Model->countAllResults()
+ 7 APPPATH\Controllers\Admin\DashboardController.php(16): App\Services\StatisticsService->getGlobalStats()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin\DashboardController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\DashboardController))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\fenosoa\\S4-projet-final\\ETU004301-004156\\ETU004301-004156\\public\\index.php')
+CRITICAL - 2026-07-20 03:47:34 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to prepare statement: 1, no such table: clients
+[Method: GET, Route: admin]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `clients`', [], false)
+ 2 SYSTEMPATH\Model.php(523): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+ 3 APPPATH\Services\StatisticsService.php(30): CodeIgniter\Model->countAllResults()
+ 4 APPPATH\Controllers\Admin\DashboardController.php(16): App\Services\StatisticsService->getGlobalStats()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin\DashboardController->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\DashboardController))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\fenosoa\\S4-projet-final\\ETU004301-004156\\ETU004301-004156\\public\\index.php')
+CRITICAL - 2026-07-20 03:47:34 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unable to prepare statement: 1, no such table: clients
+in SYSTEMPATH\Database\SQLite3\Connection.php on line 174.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `clients`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `clients`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `clients`', [], false)
+ 4 SYSTEMPATH\Model.php(523): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+ 5 APPPATH\Services\StatisticsService.php(30): CodeIgniter\Model->countAllResults()
+ 6 APPPATH\Controllers\Admin\DashboardController.php(16): App\Services\StatisticsService->getGlobalStats()
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin\DashboardController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\DashboardController))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\fenosoa\\S4-projet-final\\ETU004301-004156\\ETU004301-004156\\public\\index.php')
+CRITICAL - 2026-07-20 03:47:34 --> [Caused by] Exception: Unable to prepare statement: 1, no such table: clients
+in SYSTEMPATH\Database\SQLite3\Connection.php on line 164.
+ 1 SYSTEMPATH\Database\SQLite3\Connection.php(164): SQLite3->query('SELECT COUNT(*) AS `numrows`
+FROM `clients`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `clients`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `clients`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `clients`', [], false)
+ 5 SYSTEMPATH\Model.php(523): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+ 6 APPPATH\Services\StatisticsService.php(30): CodeIgniter\Model->countAllResults()
+ 7 APPPATH\Controllers\Admin\DashboardController.php(16): App\Services\StatisticsService->getGlobalStats()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin\DashboardController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\DashboardController))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\fenosoa\\S4-projet-final\\ETU004301-004156\\ETU004301-004156\\public\\index.php')
+DEBUG - 2026-07-20 03:58:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 03:58:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 03:58:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 03:58:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 03:58:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 03:58:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 03:58:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 03:58:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 03:58:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 03:58:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 03:58:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 03:58:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
