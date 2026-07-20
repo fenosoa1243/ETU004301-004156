@@ -101,14 +101,24 @@ END;
 CREATE TRIGGER tg_transactions_update_soldes
 AFTER INSERT ON transactions
 BEGIN
-    UPDATE clients 
-    SET solde = solde - NEW.montant_total 
-    WHERE id = NEW.client_source_id;
+    -- Dépôt (type 1) : crédite le client source
+    UPDATE clients
+    SET solde = solde + NEW.montant
+    WHERE NEW.operation_type_id = 1
+      AND id = NEW.client_source_id;
 
-    UPDATE clients 
-    SET solde = solde + NEW.montant 
-    WHERE id = NEW.client_destination_id 
-    AND NEW.client_destination_id IS NOT NULL;
+    -- Retrait / Transfert (types 2 et 3) : débite le client source du montant total
+    UPDATE clients
+    SET solde = solde - NEW.montant_total
+    WHERE NEW.operation_type_id IN (2, 3)
+      AND id = NEW.client_source_id;
+
+    -- Transfert (type 3) : crédite le destinataire du montant net
+    UPDATE clients
+    SET solde = solde + NEW.montant
+    WHERE NEW.operation_type_id = 3
+      AND NEW.client_destination_id IS NOT NULL
+      AND id = NEW.client_destination_id;
 END;
 
 -- INSERT_PREFIXES

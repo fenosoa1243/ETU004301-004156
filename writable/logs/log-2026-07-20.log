@@ -197,3 +197,246 @@ DEBUG - 2026-07-20 05:49:24 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2026-07-20 05:49:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2026-07-20 05:49:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2026-07-20 05:49:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 05:57:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 05:57:37 --> CSRF token verified.
+DEBUG - 2026-07-20 05:57:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 05:57:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 05:57:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 05:57:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 05:57:52 --> CSRF token verified.
+DEBUG - 2026-07-20 05:57:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 05:57:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 05:57:58 --> CSRF token verified.
+DEBUG - 2026-07-20 05:57:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 05:57:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 05:58:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 05:58:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 06:02:51 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: client/login]
+in SYSTEMPATH\Security\Security.php on line 258.
+ 1 SYSTEMPATH\Security\Security.php(258): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH\Filters\CSRF.php(52): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH\Filters\Filters.php(241): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), null)
+ 4 SYSTEMPATH\Filters\Filters.php(221): CodeIgniter\Filters\Filters->runBefore([...])
+ 5 SYSTEMPATH\CodeIgniter.php(465): CodeIgniter\Filters\Filters->run('client/login', 'before')
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\fenosoa\\S4-projet-final\\ETU004301-004156\\ETU004301-004156\\public\\index.php')
+DEBUG - 2026-07-20 06:03:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:03:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:03:44 --> CSRF token verified.
+DEBUG - 2026-07-20 06:03:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:03:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:03:59 --> CSRF token verified.
+DEBUG - 2026-07-20 06:03:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:04:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:04:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:04:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:04:25 --> CSRF token verified.
+DEBUG - 2026-07-20 06:04:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:04:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:04:35 --> CSRF token verified.
+DEBUG - 2026-07-20 06:04:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:04:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:04:50 --> CSRF token verified.
+DEBUG - 2026-07-20 06:04:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:04:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:04:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:04:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:05:28 --> CSRF token verified.
+DEBUG - 2026-07-20 06:05:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:05:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:05:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:06:34 --> CSRF token verified.
+DEBUG - 2026-07-20 06:06:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 06:06:34 --> CHECK constraint failed: solde >= 0
+in SYSTEMPATH\Database\SQLite3\Connection.php on line 163.
+ 1 SYSTEMPATH\Database\SQLite3\Connection.php(163): SQLite3->exec('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (\'MM20260720000001\', 1, 1, NULL, 1000000, 0, 1000000, 0, 1000000)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (\'MM20260720000001\', 1, 1, NULL, 1000000, 0, 1000000, 0, 1000000)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (\'MM20260720000001\', 1, 1, NULL, 1000000, 0, 1000000, 0, 1000000)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (:reference:, :operation_type_id:, :client_source_id:, :client_destination_id:, :montant:, :frais:, :montant_total:, :solde_avant:, :solde_apres:)', [...], false)
+ 5 SYSTEMPATH\Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Services\OperationService.php(64): CodeIgniter\Model->insert([...])
+ 9 APPPATH\Controllers\Client\DepositController.php(48): App\Services\OperationService->deposit(1, 1000000.0)
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Client\DepositController->store()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Client\DepositController))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\fenosoa\\S4-projet-final\\ETU004301-004156\\ETU004301-004156\\public\\index.php')
+DEBUG - 2026-07-20 06:06:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:06:43 --> CSRF token verified.
+DEBUG - 2026-07-20 06:06:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 06:06:43 --> CHECK constraint failed: solde >= 0
+in SYSTEMPATH\Database\SQLite3\Connection.php on line 163.
+ 1 SYSTEMPATH\Database\SQLite3\Connection.php(163): SQLite3->exec('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (\'MM20260720000001\', 1, 1, NULL, 1000000, 0, 1000000, 0, 1000000)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (\'MM20260720000001\', 1, 1, NULL, 1000000, 0, 1000000, 0, 1000000)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (\'MM20260720000001\', 1, 1, NULL, 1000000, 0, 1000000, 0, 1000000)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (:reference:, :operation_type_id:, :client_source_id:, :client_destination_id:, :montant:, :frais:, :montant_total:, :solde_avant:, :solde_apres:)', [...], false)
+ 5 SYSTEMPATH\Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Services\OperationService.php(64): CodeIgniter\Model->insert([...])
+ 9 APPPATH\Controllers\Client\DepositController.php(48): App\Services\OperationService->deposit(1, 1000000.0)
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Client\DepositController->store()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Client\DepositController))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\fenosoa\\S4-projet-final\\ETU004301-004156\\ETU004301-004156\\public\\index.php')
+DEBUG - 2026-07-20 06:06:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:06:52 --> CSRF token verified.
+DEBUG - 2026-07-20 06:06:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 06:06:52 --> CHECK constraint failed: solde >= 0
+in SYSTEMPATH\Database\SQLite3\Connection.php on line 163.
+ 1 SYSTEMPATH\Database\SQLite3\Connection.php(163): SQLite3->exec('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (\'MM20260720000001\', 1, 1, NULL, 10000, 0, 10000, 0, 10000)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (\'MM20260720000001\', 1, 1, NULL, 10000, 0, 10000, 0, 10000)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (\'MM20260720000001\', 1, 1, NULL, 10000, 0, 10000, 0, 10000)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (:reference:, :operation_type_id:, :client_source_id:, :client_destination_id:, :montant:, :frais:, :montant_total:, :solde_avant:, :solde_apres:)', [...], false)
+ 5 SYSTEMPATH\Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Services\OperationService.php(64): CodeIgniter\Model->insert([...])
+ 9 APPPATH\Controllers\Client\DepositController.php(48): App\Services\OperationService->deposit(1, 10000.0)
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Client\DepositController->store()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Client\DepositController))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\fenosoa\\S4-projet-final\\ETU004301-004156\\ETU004301-004156\\public\\index.php')
+DEBUG - 2026-07-20 06:06:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:07:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:07:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:07:14 --> CSRF token verified.
+DEBUG - 2026-07-20 06:07:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 06:07:14 --> CHECK constraint failed: solde >= 0
+in SYSTEMPATH\Database\SQLite3\Connection.php on line 163.
+ 1 SYSTEMPATH\Database\SQLite3\Connection.php(163): SQLite3->exec('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (\'MM20260720000001\', 1, 1, NULL, 100000, 0, 100000, 0, 100000)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (\'MM20260720000001\', 1, 1, NULL, 100000, 0, 100000, 0, 100000)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (\'MM20260720000001\', 1, 1, NULL, 100000, 0, 100000, 0, 100000)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (:reference:, :operation_type_id:, :client_source_id:, :client_destination_id:, :montant:, :frais:, :montant_total:, :solde_avant:, :solde_apres:)', [...], false)
+ 5 SYSTEMPATH\Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Services\OperationService.php(64): CodeIgniter\Model->insert([...])
+ 9 APPPATH\Controllers\Client\DepositController.php(48): App\Services\OperationService->deposit(1, 100000.0)
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Client\DepositController->store()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Client\DepositController))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\fenosoa\\S4-projet-final\\ETU004301-004156\\ETU004301-004156\\public\\index.php')
+DEBUG - 2026-07-20 06:07:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:07:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:07:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:07:29 --> CSRF token verified.
+DEBUG - 2026-07-20 06:07:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:07:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:07:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:07:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:07:53 --> CSRF token verified.
+DEBUG - 2026-07-20 06:07:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:07:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:07:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:07:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:08:02 --> CSRF token verified.
+DEBUG - 2026-07-20 06:08:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:08:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:08:07 --> CSRF token verified.
+DEBUG - 2026-07-20 06:08:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:08:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:08:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:08:16 --> CSRF token verified.
+DEBUG - 2026-07-20 06:08:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 06:08:16 --> CHECK constraint failed: solde >= 0
+in SYSTEMPATH\Database\SQLite3\Connection.php on line 163.
+ 1 SYSTEMPATH\Database\SQLite3\Connection.php(163): SQLite3->exec('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (\'MM20260720000001\', 1, 2, NULL, 100000, 0, 100000, 0, 100000)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (\'MM20260720000001\', 1, 2, NULL, 100000, 0, 100000, 0, 100000)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (\'MM20260720000001\', 1, 2, NULL, 100000, 0, 100000, 0, 100000)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (:reference:, :operation_type_id:, :client_source_id:, :client_destination_id:, :montant:, :frais:, :montant_total:, :solde_avant:, :solde_apres:)', [...], false)
+ 5 SYSTEMPATH\Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Services\OperationService.php(64): CodeIgniter\Model->insert([...])
+ 9 APPPATH\Controllers\Client\DepositController.php(48): App\Services\OperationService->deposit(2, 100000.0)
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Client\DepositController->store()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Client\DepositController))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\fenosoa\\S4-projet-final\\ETU004301-004156\\ETU004301-004156\\public\\index.php')
+DEBUG - 2026-07-20 06:08:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:08:26 --> CSRF token verified.
+DEBUG - 2026-07-20 06:08:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 06:08:26 --> CHECK constraint failed: solde >= 0
+in SYSTEMPATH\Database\SQLite3\Connection.php on line 163.
+ 1 SYSTEMPATH\Database\SQLite3\Connection.php(163): SQLite3->exec('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (\'MM20260720000001\', 1, 2, NULL, 100, 0, 100, 0, 100)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (\'MM20260720000001\', 1, 2, NULL, 100, 0, 100, 0, 100)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (\'MM20260720000001\', 1, 2, NULL, 100, 0, 100, 0, 100)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `transactions` (`reference`, `operation_type_id`, `client_source_id`, `client_destination_id`, `montant`, `frais`, `montant_total`, `solde_avant`, `solde_apres`) VALUES (:reference:, :operation_type_id:, :client_source_id:, :client_destination_id:, :montant:, :frais:, :montant_total:, :solde_avant:, :solde_apres:)', [...], false)
+ 5 SYSTEMPATH\Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Services\OperationService.php(64): CodeIgniter\Model->insert([...])
+ 9 APPPATH\Controllers\Client\DepositController.php(48): App\Services\OperationService->deposit(2, 100.0)
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Client\DepositController->store()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Client\DepositController))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+16 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\fenosoa\\S4-projet-final\\ETU004301-004156\\ETU004301-004156\\public\\index.php')
+DEBUG - 2026-07-20 06:08:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:08:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:08:35 --> CSRF token verified.
+DEBUG - 2026-07-20 06:08:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:08:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:08:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:10:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:10:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:10:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:10:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:10:39 --> CSRF token verified.
+DEBUG - 2026-07-20 06:10:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:10:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:12:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:12:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:12:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:13:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:13:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:13:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:13:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:14:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:14:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:15:01 --> CSRF token verified.
+DEBUG - 2026-07-20 06:15:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:15:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:15:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:19:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:19:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:19:52 --> CSRF token verified.
+DEBUG - 2026-07-20 06:19:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:19:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:20:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:20:20 --> CSRF token verified.
+DEBUG - 2026-07-20 06:20:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:20:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:20:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:20:54 --> CSRF token verified.
+DEBUG - 2026-07-20 06:20:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:20:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:21:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:21:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:21:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:21:21 --> CSRF token verified.
+DEBUG - 2026-07-20 06:21:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:21:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
