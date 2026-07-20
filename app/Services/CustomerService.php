@@ -69,4 +69,27 @@ class CustomerService
 
         return $client;
     }
+
+    public function deleteCustomer(int $id): bool
+    {
+        $client = $this->clientModel->find($id);
+
+        if ($client === null || ($client['telephone'] ?? '') === OPERATOR_PHONE) {
+            return false;
+        }
+
+        $db = Database::connect();
+        $db->transStart();
+
+        $this->transactionModel
+            ->where('client_source_id', $id)
+            ->orWhere('client_destination_id', $id)
+            ->delete();
+
+        $deleted = $this->clientModel->delete($id);
+
+        $db->transComplete();
+
+        return $deleted !== false && $db->transStatus();
+    }
 }

@@ -31,6 +31,19 @@
                             <a href="<?= site_url('admin/customers/' . $client['id']) ?>" class="btn btn-sm btn-outline-primary">
                                 <i class="bi bi-eye"></i>
                             </a>
+                            <div class="btn-group" role="group">
+                                <a href="<?= site_url('admin/customers/' . $client['id']) ?>" class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <?php if (($client['telephone'] ?? '') !== OPERATOR_PHONE): ?>
+                                    <form action="<?= site_url('admin/customers/' . $client['id'] . '/delete') ?>" method="post" class="d-inline">
+                                        <?= csrf_field() ?>
+                                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Supprimer ce client ?');">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                <?php endif; ?>
+                            </div>
                         </td>
                     </tr>
                 <?php endforeach; ?>

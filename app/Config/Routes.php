@@ -5,6 +5,8 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+$routes->get('/', 'Client\AuthController::login');
+
 $routes->group('admin', static function ($routes) {
     $routes->get('/', 'Admin\DashboardController::index', ['as' => 'admin.dashboard']);
 
@@ -35,4 +37,33 @@ $routes->group('admin', static function ($routes) {
 
     $routes->get('customers', 'Admin\CustomerController::index', ['as' => 'admin.customers.index']);
     $routes->get('customers/(:num)', 'Admin\CustomerController::show/$1', ['as' => 'admin.customers.show']);
+    $routes->post('customers/(:num)/delete', 'Admin\CustomerController::delete/$1', ['as' => 'admin.customers.delete']);
+});
+
+$routes->group('client', static function ($routes) {
+    // Routes publiques (connexion automatique, sans mot de passe)
+    $routes->get('login', 'Client\AuthController::login', ['as' => 'client.login']);
+    $routes->post('login', 'Client\AuthController::attempt', ['as' => 'client.login.attempt']);
+    $routes->get('logout', 'Client\AuthController::logout', ['as' => 'client.logout']);
+
+    // Routes protégées (nécessitent une session client ouverte)
+    $routes->group('', ['filter' => 'clientAuth'], static function ($routes) {
+        $routes->get('/', 'Client\DashboardController::index', ['as' => 'client.dashboard']);
+
+        $routes->get('solde', 'Client\BalanceController::index', ['as' => 'client.balance']);
+
+        $routes->get('depot', 'Client\DepositController::create', ['as' => 'client.deposit.create']);
+        $routes->post('depot', 'Client\DepositController::store', ['as' => 'client.deposit.store']);
+
+        $routes->get('retrait', 'Client\WithdrawalController::create', ['as' => 'client.withdrawal.create']);
+        $routes->post('retrait', 'Client\WithdrawalController::store', ['as' => 'client.withdrawal.store']);
+
+        $routes->get('transfert', 'Client\TransferController::create', ['as' => 'client.transfer.create']);
+        $routes->post('transfert', 'Client\TransferController::store', ['as' => 'client.transfer.store']);
+
+        $routes->get('historique', 'Client\HistoryController::index', ['as' => 'client.history.index']);
+        $routes->get('historique/(:num)', 'Client\HistoryController::show/$1', ['as' => 'client.history.show']);
+
+        $routes->get('profil', 'Client\ProfileController::index', ['as' => 'client.profile']);
+    });
 });

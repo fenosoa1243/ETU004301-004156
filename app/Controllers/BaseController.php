@@ -28,6 +28,13 @@ abstract class BaseController extends Controller
     // protected $session;
 
     /**
+     * Helpers chargés automatiquement pour tous les controllers (opérateur et client).
+     *
+     * @var list<string>
+     */
+    protected $helpers = ['money', 'phone', 'date', 'transaction', 'reference'];
+
+    /**
      * @return void
      */
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)

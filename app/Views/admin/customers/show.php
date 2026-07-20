@@ -73,5 +73,14 @@
 </div>
 
 <a href="<?= site_url('admin/customers') ?>" class="btn btn-link mt-3">← Retour à la liste</a>
+<div class="d-flex gap-2 mt-3">
+    <a href="<?= site_url('admin/customers') ?>" class="btn btn-secondary">← Retour à la liste</a>
+    <?php if (($client['telephone'] ?? '') !== OPERATOR_PHONE): ?>
+        <form action="<?= site_url('admin/customers/' . $client['id'] . '/delete') ?>" method="post" onsubmit="return confirm('Supprimer ce client ?');">
+            <?= csrf_field() ?>
+            <button type="submit" class="btn btn-danger">Supprimer le client</button>
+        </form>
+    <?php endif; ?>
+</div>
 
 <?= $this->endSection() ?>

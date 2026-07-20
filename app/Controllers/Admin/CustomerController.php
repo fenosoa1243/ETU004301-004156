@@ -48,4 +48,13 @@ class CustomerController extends BaseController
             'client' => $client,
         ]);
     }
+
+    public function delete(int $id)
+    {
+        if (! $this->customerService->deleteCustomer($id)) {
+            return redirect()->to('admin/customers')->with('error', 'Impossible de supprimer ce client.');
+        }
+
+        return redirect()->to('admin/customers')->with('success', 'Client supprimé avec succès.');
+    }
 }

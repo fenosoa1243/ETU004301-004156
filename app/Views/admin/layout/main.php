@@ -4,15 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= esc($title ?? 'Espace Opérateur') ?> | Mobile Money</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <style>
-        body { background-color: #f4f6f9; }
-        .sidebar { min-height: 100vh; background-color: #1e2a38; }
-        .sidebar .nav-link { color: #c9d3dd; }
-        .sidebar .nav-link.active, .sidebar .nav-link:hover { color: #fff; background-color: #2c3e50; border-radius: .375rem; }
-        .card-stat { border: none; border-radius: .75rem; box-shadow: 0 .125rem .5rem rgba(0,0,0,.08); }
-    </style>
+    <link href="<?= base_url('vendor/bootstrap-5.3.3/css/bootstrap.min.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('vendor/bootstrap-icons/font/bootstrap-icons.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('css/admin.css') ?>" rel="stylesheet">
     <?= $this->renderSection('styles') ?>
 </head>
 <body>
@@ -43,8 +37,8 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="<?= base_url('vendor/bootstrap-5.3.3/js/bootstrap.bundle.min.js') ?>"></script>
+<script src="<?= base_url('vendor/chart.js/chart.umd.min.js') ?>"></script>
 <?= $this->renderSection('scripts') ?>
 </body>
 </html>

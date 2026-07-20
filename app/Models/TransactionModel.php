@@ -44,4 +44,59 @@ class TransactionModel extends Model
     {
         return $this->orderBy('created_at', 'DESC')->findAll($limit);
     }
+
+    /**
+     * Construit une requête paginable des opérations d'un client (envoyées
+     * ou reçues), avec les libellés du type d'opération et les numéros
+     * de l'expéditeur/destinataire, filtrable par recherche, type, dates
+     * et montant.
+     *
+     * @param array{search?: ?string, type?: ?string, date_debut?: ?string, date_fin?: ?string, montant_min?: ?string, montant_max?: ?string} $filters
+     */
+    public function queryForClient(int $clientId, array $filters = []): self
+    {
+        $this->select('
+                transactions.*,
+                operation_types.nom AS type_operation,
+                cs.telephone AS expediteur,
+                cd.telephone AS destinataire
+            ')
+            ->join('operation_types', 'operation_types.id = transactions.operation_type_id')
+            ->join('clients cs', 'cs.id = transactions.client_source_id')
+            ->join('clients cd', 'cd.id = transactions.client_destination_id', 'left')
+            ->groupStart()
+                ->where('transactions.client_source_id', $clientId)
+                ->orWhere('transactions.client_destination_id', $clientId)
+            ->groupEnd();
+
+        if (! empty($filters['type'])) {
+            $this->where('operation_types.nom', $filters['type']);
+        }
+
+        if (! empty($filters['date_debut'])) {
+            $this->where('transactions.created_at >=', $filters['date_debut'] . ' 00:00:00');
+        }
+
+        if (! empty($filters['date_fin'])) {
+            $this->where('transactions.created_at <=', $filters['date_fin'] . ' 23:59:59');
+        }
+
+        if (! empty($filters['montant_min'])) {
+            $this->where('transactions.montant >=', $filters['montant_min']);
+        }
+
+        if (! empty($filters['montant_max'])) {
+            $this->where('transactions.montant <=', $filters['montant_max']);
+        }
+
+        if (! empty($filters['search'])) {
+            $this->groupStart()
+                ->like('transactions.reference', $filters['search'])
+                ->orLike('cs.telephone', $filters['search'])
+                ->orLike('cd.telephone', $filters['search'])
+            ->groupEnd();
+        }
+
+        return $this->orderBy('transactions.created_at', 'DESC');
+    }
 }

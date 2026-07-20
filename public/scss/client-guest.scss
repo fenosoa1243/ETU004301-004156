@@ -1,0 +1,30 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f6f9;
+    padding: 2rem 0;
+}
+
+.auth-card {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 .5rem 1.5rem rgba(15, 23, 42, .12);
+    background: #f8fafc;
+    width: 100%;
+    border: 1px solid rgba(15, 23, 42, .06);
+}
+
+.auth-card .card-body {
+    background: #ffffff;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #0d6efd, #1d4ed8);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, #1d4ed8, #2563eb);
+}

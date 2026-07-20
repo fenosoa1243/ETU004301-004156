@@ -2,78 +2,78 @@
 
 ### Initialisation du projet — ETU004301
 
-- [ ] Installation de CodeIgniter 4
-- [ ] Configuration de SQLite
-- [ ] Configuration des routes
-- [ ] Configuration de l'environnement
-- [ ] Création du dépôt Git
+- [ok] Installation de CodeIgniter 4
+- [ok] Configuration de SQLite
+- [ok] Configuration des routes
+- [ok] Configuration de l'environnement
+- [ok] Création du dépôt Git
 
 ### Base de données — ETU004301
 
-- [ ] Conception de la base de données
-- [ ] Création du fichier base.sql
-- [ ] Création des tables
-- [ ] Définition des clés étrangères
-- [ ] Création des index
-- [ ] Création des vues SQL
-- [ ] Insertion des données initiales
+- [ok] Conception de la base de données
+- [ok] Création du fichier base.sql
+- [ok] Création des tables
+- [ok] Définition des clés étrangères
+- [ok] Création des index
+- [ok] Création des vues SQL
+- [ok] Insertion des données initiales
 
 ### Espace Opérateur — ETU004301
 
 #### Gestion des préfixes
 
-- [ ] CRUD des préfixes
-- [ ] Validation de l'unicité
-- [ ] Activation/Désactivation
+- [ok] CRUD des préfixes
+- [ok] Validation de l'unicité
+- [ok] Activation/Désactivation
 
 #### Gestion des types d'opérations
 
-- [ ] CRUD des opérations
-- [ ] Dépôt
-- [ ] Retrait
-- [ ] Transfert
+- [ok] CRUD des opérations
+- [ok] Dépôt
+- [ok] Retrait
+- [ok] Transfert
 
 #### Gestion des frais
 
-- [ ] Création des tranches
-- [ ] Modification des frais
-- [ ] Calcul automatique selon le montant
+- [ok] Création des tranches
+- [ok] Modification des frais
+- [ok] Calcul automatique selon le montant
 
 #### Tableau de bord opérateur
 
-- [ ] Situation des gains
-- [ ] Situation des comptes clients
-- [ ] Statistiques des opérations
+- [ok] Situation des gains
+- [ok] Situation des comptes clients
+- [ok] Statistiques des opérations
 
 ### Espace Client — ETU004156
 
 #### Authentification
 
-- [ ] Connexion par numéro
-- [ ] Création automatique du compte
-- [ ] Vérification des préfixes
+- [ok] Connexion par numéro
+- [ok] Création automatique du compte
+- [ok] Vérification des préfixes
 
 #### Gestion des opérations
 
-- [ ] Consultation du solde
-- [ ] Dépôt
-- [ ] Retrait
-- [ ] Transfert
-- [ ] Historique des transactions
+- [ok] Consultation du solde
+- [ok] Dépôt
+- [ok] Retrait
+- [ok] Transfert
+- [ok] Historique des transactions
 
 ### Interface utilisateur — ETU004156
 
-- [ ] Intégration de Bootstrap 5
-- [ ] Responsive Design
-- [ ] Dashboard
-- [ ] Formulaires
-- [ ] Tableaux
-- [ ] Messages de validation
+- [ok] Intégration de Bootstrap 5
+- [ok] Responsive Design
+- [ok] Dashboard
+- [ok] Formulaires
+- [ok] Tableaux
+- [ok] Messages de validation
 
 ### Sécurité
 
-- [ ] Validation des formulaires — ETU004156
-- [ ] Protection CSRF — ETU004156
-- [ ] Protection XSS — ETU004156
-- [ ] Requêtes préparées — ETU004301
-- [ ] Transactions SQLite — ETU004301
+- [ok] Validation des formulaires — ETU004156
+- [ok] Protection CSRF — ETU004156
+- [ok] Protection XSS — ETU004156
+- [ok] Requêtes préparées — ETU004301
+- [ok] Transactions SQLite — ETU004301
