@@ -1,4 +1,4 @@
-<nav class="sidebar p-3" style="width: 250px;">
+<nav class="sidebar p-3">
     <a href="<?= site_url('admin') ?>" class="d-flex align-items-center mb-4 text-white text-decoration-none">
         <i class="bi bi-wallet2 fs-4 me-2"></i>
         <span class="fs-5 fw-bold">Mobile Money</span>

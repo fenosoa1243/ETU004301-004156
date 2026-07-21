@@ -42,7 +42,8 @@ class StatisticsService
             'total_retraits'            => $this->transactionModel->sumByType(self::RETRAIT, 'montant'),
             'total_transferts'          => $this->transactionModel->sumByType(self::TRANSFERT, 'montant'),
             'revenu_frais'              => $this->transactionModel->sumByType(self::RETRAIT, 'frais')
-                                            + $this->transactionModel->sumByType(self::TRANSFERT, 'frais'),
+                                            + $this->transactionModel->sumByType(self::TRANSFERT, 'frais')
+                                            + $this->transactionModel->sumByType(self::TRANSFERT, 'frais_retrait'),
             'nb_operateurs'             => $this->operatorModel->countActive(),
             'nb_transferts_externes'    => (int) ($externalStats['nb_transferts'] ?? 0),
             'montant_transferts_externes' => (float) ($externalStats['total_montant'] ?? 0),
@@ -85,6 +86,21 @@ class StatisticsService
         $internes = $this->getInternalGains($filters);
         $externes = $this->getExternalGains($filters);
 
+        // Total des frais de retrait : les retraits purs + les frais de
+        // retrait optionnellement inclus dans un transfert interne.
+        $retraitBuilder = $db->table('transactions')->where('operation_type_id', self::RETRAIT);
+        $this->applyDateFilters($retraitBuilder, $filters);
+        $totalFraisRetraitsPurs = array_sum(array_column($retraitBuilder->get()->getResultArray(), 'frais'));
+
+        $transfertBuilder = $db->table('transactions')->where('operation_type_id', self::TRANSFERT);
+        $this->applyDateFilters($transfertBuilder, $filters);
+        $totalFraisRetraitViaTransfert = array_sum(array_column($transfertBuilder->get()->getResultArray(), 'frais_retrait'));
+
+        $totalFraisRetraits   = $totalFraisRetraitsPurs + $totalFraisRetraitViaTransfert;
+        $totalFraisTransferts = $internes['total_frais'] + $externes['total_frais'];
+        $totalCommissionsExt  = $externes['total_commission_sup'];
+        $totalGeneral         = $totalFraisRetraits + $totalFraisTransferts + $totalCommissionsExt;
+
         return [
             'par_type'      => $revenus,
             'details'       => $details,
@@ -94,6 +110,11 @@ class StatisticsService
             'moyenne_frais' => $nbOperations > 0 ? $totalFrais / $nbOperations : 0,
             'internes'      => $internes,
             'externes'      => $externes,
+            // Synthèse demandée par le cahier des charges :
+            'total_frais_retraits'   => $totalFraisRetraits,
+            'total_frais_transferts' => $totalFraisTransferts,
+            'total_commissions_ext'  => $totalCommissionsExt,
+            'total_general'          => $totalGeneral,
         ];
     }
 

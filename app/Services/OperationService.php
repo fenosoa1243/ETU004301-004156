@@ -195,6 +195,7 @@ class OperationService
                 'destination_telephone'     => $isExternal ? $destinationTelephone : null,
                 'montant'                   => $montant,
                 'frais'                     => $fee['frais'],
+                'frais_retrait'             => $fee['frais_retrait'],
                 'commission_supplementaire' => $fee['commission_supplementaire'],
                 'montant_total'             => $montantTotal,
                 'is_external'               => $isExternal ? 1 : 0,

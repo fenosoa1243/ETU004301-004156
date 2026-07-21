@@ -111,7 +111,7 @@ class FeeScaleController extends BaseController
 
         if (! $this->validateData($data, [
             'operation_type_id' => 'required|integer',
-            'montant_min'       => 'required|decimal|greater_than[0]',
+            'montant_min'       => 'required|decimal|greater_than_equal_to[0]',
             'montant_max'       => 'required|decimal|greater_than[0]',
             'frais'             => 'required|decimal|greater_than_equal_to[0]',
         ])) {

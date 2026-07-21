@@ -140,3 +140,18 @@
 - [ok] Adaptation du transfert (détection opérateur, frais détaillés)
 - [ok] Affichage commission + commission supplémentaire sur le formulaire transfert
 - [ok] Tests de régression transferts internes (comportement V1 inchangé)
+
+
+#### ALEA
+promotion en % sur @frais de transfere de meme @operateur (ex:)
+contrainte:
+% goit etre inclus dans la base 
+
+table fait (ok)
+controller:
+_admin/controllerpromotion
+views a creer:
+    _admin/promotions/:(pour afficher les pages)
+    *index
+    *create
+    *edit

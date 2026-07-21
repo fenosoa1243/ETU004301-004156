@@ -89,14 +89,16 @@ CREATE TABLE IF NOT EXISTS transactions (
     destination_telephone     TEXT,
     montant                   REAL NOT NULL CHECK (montant > 0),
     frais                     REAL NOT NULL DEFAULT 0 CHECK (frais >= 0),
+    frais_retrait             REAL NOT NULL DEFAULT 0 CHECK (frais_retrait >= 0),
     commission_supplementaire REAL NOT NULL DEFAULT 0 CHECK (commission_supplementaire >= 0),
     montant_total             REAL NOT NULL CHECK (montant_total > 0),
     is_external               INTEGER NOT NULL DEFAULT 0 CHECK (is_external IN (0, 1)),
     external_operator_id      INTEGER,
+    batch_reference           TEXT,
     solde_avant               REAL NOT NULL CHECK (solde_avant >= 0),
     solde_apres               REAL NOT NULL CHECK (solde_apres >= 0),
     created_at                TEXT NOT NULL DEFAULT (datetime('now')),
-    CHECK (montant_total = montant + frais + commission_supplementaire),
+    CHECK (montant_total = montant + frais + frais_retrait + commission_supplementaire),
     CHECK (client_destination_id IS NULL OR client_destination_id <> client_source_id),
     FOREIGN KEY (operation_type_id) REFERENCES operation_types (id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (client_source_id) REFERENCES clients (id) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -129,9 +131,11 @@ SELECT
     COALESCE(cd.telephone, t.destination_telephone) AS destinataire,
     t.montant,
     t.frais,
+    t.frais_retrait,
     t.commission_supplementaire,
     t.montant_total,
     t.is_external,
+    t.batch_reference,
     t.solde_avant,
     t.solde_apres,
     t.created_at AS date_operation,
@@ -516,3 +520,63 @@ INSERT OR IGNORE INTO operator_prefixes (operator_id, prefix, actif)
 SELECT id, '031', 1 FROM operators WHERE code = 'AIRTEL';
 
 INSERT OR IGNORE INTO inter_operator_commissions (pourcentage, actif) VALUES (5, 1);
+
+-- ============================================================
+-- 8. DONNÉES DE DÉMONSTRATION (clients + dépôts initiaux)
+-- ============================================================
+INSERT OR IGNORE INTO clients (telephone, nom, solde) VALUES
+    ('0391111111', 'Rakoto Jean', 0),
+    ('0392222222', 'Rasoa Marie', 0),
+    ('0303333333', 'Randriamampionona Paul', 0),
+    ('0394444444', 'Andriamalala Nomena', 0);
+
+INSERT OR IGNORE INTO transactions (
+    reference, operation_type_id, client_source_id, client_destination_id,
+    destination_telephone, montant, frais, frais_retrait, commission_supplementaire,
+    montant_total, is_external, external_operator_id, batch_reference, solde_avant, solde_apres
+)
+SELECT 'SEED-DEP-0391111111', ot.id, c.id, NULL, NULL, 500000, 0, 0, 0, 500000, 0, NULL, NULL, 0, 500000
+FROM operation_types ot, clients c
+WHERE ot.nom = 'Dépôt' AND c.telephone = '0391111111';
+
+INSERT OR IGNORE INTO transactions (
+    reference, operation_type_id, client_source_id, client_destination_id,
+    destination_telephone, montant, frais, frais_retrait, commission_supplementaire,
+    montant_total, is_external, external_operator_id, batch_reference, solde_avant, solde_apres
+)
+SELECT 'SEED-DEP-0392222222', ot.id, c.id, NULL, NULL, 250000, 0, 0, 0, 250000, 0, NULL, NULL, 0, 250000
+FROM operation_types ot, clients c
+WHERE ot.nom = 'Dépôt' AND c.telephone = '0392222222';
+
+INSERT OR IGNORE INTO transactions (
+    reference, operation_type_id, client_source_id, client_destination_id,
+    destination_telephone, montant, frais, frais_retrait, commission_supplementaire,
+    montant_total, is_external, external_operator_id, batch_reference, solde_avant, solde_apres
+)
+SELECT 'SEED-DEP-0303333333', ot.id, c.id, NULL, NULL, 100000, 0, 0, 0, 100000, 0, NULL, NULL, 0, 100000
+FROM operation_types ot, clients c
+WHERE ot.nom = 'Dépôt' AND c.telephone = '0303333333';
+
+
+CREATE TABLE internal_promotions (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    pourcentage REAL NOT NULL CHECK (pourcentage >= 0 AND pourcentage <= 100),
+    actif       INTEGER NOT NULL DEFAULT 1 CHECK (actif IN (0, 1)),
+    created_at  TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+
+CREATE TABLE promotion_history (
+    id                  INTEGER PRIMARY KEY AUTOINCREMENT,
+    promotion_id        INTEGER NOT NULL,
+    pourcentage_avant   REAL NOT NULL,
+    pourcentage_apres   REAL NOT NULL,
+    created_at          TEXT NOT NULL DEFAULT (datetime('now')),
+
+    FOREIGN KEY (promotion_id)
+        REFERENCES internal_promotions (id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+INSERT INTO internal_promotions (pourcentage, actif) VALUES (10, 1);
