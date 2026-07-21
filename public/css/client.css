@@ -1,9 +1,48 @@
-body { background-color: #f4f6f9; color: #0f172a; }
-.navbar-client { background: linear-gradient(90deg, #1e293b, #0f172a); box-shadow: 0 .25rem .75rem rgba(15, 23, 42, .2); }
-.navbar-client .nav-link { color: rgba(255, 255, 255, .85); }
+/* ============================================
+   CLIENT LAYOUT STYLES
+   ============================================ */
+
+/* Body & Background */
+body {
+    background-color: #f4f6f9;
+    color: #0f172a;
+}
+
+/* Navbar */
+.navbar-client {
+    background: linear-gradient(90deg, #1e293b, #0f172a);
+    box-shadow: 0 .25rem .75rem rgba(15, 23, 42, .2);
+}
+
+.navbar-client .nav-link {
+    color: rgba(255, 255, 255, .85);
+}
+
 .navbar-client .nav-link.active,
-.navbar-client .nav-link:hover { color: #fff; font-weight: 600; }
-.card-stat { border: 1px solid rgba(15, 23, 42, .06); border-radius: .75rem; box-shadow: 0 .125rem .5rem rgba(15, 23, 42, .08); background: #fff; }
-.solde-card { background: linear-gradient(135deg, #0f172a, #1d4ed8); color: #fff; border-radius: 1rem; }
-.table thead th { border-bottom: 2px solid rgba(15, 23, 42, .08); }
-.table tbody tr:hover { background: #f8fafc; }
+.navbar-client .nav-link:hover {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Cards */
+.card-stat {
+    border: 1px solid rgba(15, 23, 42, .06);
+    border-radius: .75rem;
+    box-shadow: 0 .125rem .5rem rgba(15, 23, 42, .08);
+    background: #fff;
+}
+
+.solde-card {
+    background: linear-gradient(135deg, #0f172a, #1d4ed8);
+    color: #fff;
+    border-radius: 1rem;
+}
+
+/* Tables */
+.table thead th {
+    border-bottom: 2px solid rgba(15, 23, 42, .08);
+}
+
+.table tbody tr:hover {
+    background: #f8fafc;
+}

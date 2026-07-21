@@ -21,6 +21,33 @@
 </form>
 
 <div class="row g-3 mb-4">
+    <div class="col-md-3">
+        <div class="card card-stat p-3 h-100">
+            <div class="text-muted small">Total frais retraits</div>
+            <div class="fs-4 fw-bold text-danger"><?= number_format($gains['total_frais_retraits'], 0, ',', ' ') ?> Ar</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card card-stat p-3 h-100">
+            <div class="text-muted small">Total frais transferts</div>
+            <div class="fs-4 fw-bold text-primary"><?= number_format($gains['total_frais_transferts'], 0, ',', ' ') ?> Ar</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card card-stat p-3 h-100">
+            <div class="text-muted small">Total commissions autres opérateurs</div>
+            <div class="fs-4 fw-bold text-warning"><?= number_format($gains['total_commissions_ext'], 0, ',', ' ') ?> Ar</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card card-stat p-3 h-100 bg-light">
+            <div class="text-muted small">Total général</div>
+            <div class="fs-4 fw-bold text-success"><?= number_format($gains['total_general'], 0, ',', ' ') ?> Ar</div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3 mb-4">
     <div class="col-md-6">
         <div class="card card-stat p-3 h-100">
             <h6 class="text-primary mb-3"><i class="bi bi-house me-1"></i>Gains opérateur interne</h6>

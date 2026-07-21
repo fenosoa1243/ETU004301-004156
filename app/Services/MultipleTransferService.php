@@ -166,6 +166,7 @@ class MultipleTransferService
 
             $referenceBatch = $this->referenceService->generate();
             $transactions = [];
+            $soldeCourant = $soldeAvant;
 
             // Créer une transaction par bénéficiaire
             foreach ($beneficiaires as $tel) {
@@ -174,6 +175,9 @@ class MultipleTransferService
                 $destinationClientId = (int)$destination['id'];
 
                 $reference = $this->referenceService->generate();
+                $soldeAvantLigne = $soldeCourant;
+                $soldeApresLigne = $soldeCourant - $fee['montant_total'];
+                $soldeCourant    = $soldeApresLigne;
 
                 $this->transactionModel->insert([
                     'reference' => $reference,
@@ -183,12 +187,13 @@ class MultipleTransferService
                     'destination_telephone' => null,
                     'montant' => $montantParBeneficiaire,
                     'frais' => $fee['frais'],
+                    'frais_retrait' => 0,
                     'commission_supplementaire' => 0,
                     'montant_total' => $fee['montant_total'],
                     'is_external' => 0,
                     'external_operator_id' => null,
-                    'solde_avant' => $soldeAvant,
-                    'solde_apres' => $soldeApres - ($montantParBeneficiaire * count($beneficiaires)),
+                    'solde_avant' => $soldeAvantLigne,
+                    'solde_apres' => $soldeApresLigne,
                     'batch_reference' => $referenceBatch,
                 ]);
 

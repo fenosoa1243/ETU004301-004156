@@ -29,8 +29,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= str_contains(uri_string(), 'client/transfert') ? 'active' : '' ?>" href="<?= site_url('client/transfert') ?>">
+                    <a class="nav-link <?= str_contains(uri_string(), 'client/transfert') && !str_contains(uri_string(), 'multiple') ? 'active' : '' ?>" href="<?= site_url('client/transfert') ?>">
                         <i class="bi bi-arrow-left-right me-1"></i>Transfert
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?= str_contains(uri_string(), 'client/transfert-multiple') ? 'active' : '' ?>" href="<?= site_url('client/transfert-multiple') ?>">
+                        <i class="bi bi-send-plus me-1"></i>Envoi multiple
                     </a>
                 </li>
                 <li class="nav-item">

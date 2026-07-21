@@ -12,8 +12,9 @@ class TransactionModel extends Model
     protected $returnType       = 'array';
     protected $allowedFields    = [
         'reference', 'operation_type_id', 'client_source_id', 'client_destination_id',
-        'destination_telephone', 'montant', 'frais', 'commission_supplementaire',
-        'montant_total', 'is_external', 'external_operator_id', 'solde_avant', 'solde_apres',
+        'destination_telephone', 'montant', 'frais', 'frais_retrait', 'commission_supplementaire',
+        'montant_total', 'is_external', 'external_operator_id', 'batch_reference',
+        'solde_avant', 'solde_apres',
     ];
     protected $useTimestamps = false;
 

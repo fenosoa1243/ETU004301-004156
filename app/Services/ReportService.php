@@ -81,11 +81,11 @@ class ReportService
         if (! empty($filters['date_fin'])) {
             $builder->where('created_at <=', $filters['date_fin'] . ' 23:59:59');
         }
-        if (! empty($filters['mois'])) {
-            $builder->where("strftime('%Y-%m', created_at) =", $filters['mois']);
-        }
-        if (! empty($filters['annee'])) {
-            $builder->where("strftime('%Y', created_at) =", $filters['annee']);
+        if (! empty($filters['mois']) && ! empty($filters['annee'])) {
+            $month = str_pad((string) $filters['mois'], 2, '0', STR_PAD_LEFT);
+            $builder->where("strftime('%Y-%m', created_at) =", $filters['annee'] . '-' . $month);
+        } elseif (! empty($filters['annee'])) {
+            $builder->where("strftime('%Y', created_at) =", (string) $filters['annee']);
         }
     }
 }

@@ -91,6 +91,10 @@ $routes->group('client', static function ($routes) {
         $routes->post('transfert', 'Client\TransferController::store', ['as' => 'client.transfer.store']);
         $routes->get('transfert/preview', 'Client\TransferController::preview', ['as' => 'client.transfer.preview']);
 
+        $routes->get('transfert-multiple', 'Client\MultipleTransferController::create', ['as' => 'client.transfer.multiple.create']);
+        $routes->post('transfert-multiple', 'Client\MultipleTransferController::store', ['as' => 'client.transfer.multiple.store']);
+        $routes->get('transfert-multiple/preview', 'Client\MultipleTransferController::preview', ['as' => 'client.transfer.multiple.preview']);
+
         $routes->get('historique', 'Client\HistoryController::index', ['as' => 'client.history.index']);
         $routes->get('historique/(:num)', 'Client\HistoryController::show/$1', ['as' => 'client.history.show']);
 

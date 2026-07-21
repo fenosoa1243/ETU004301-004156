@@ -51,6 +51,11 @@
         </a>
     </div>
     <div class="col-6 col-md-3">
+        <a href="<?= site_url('client/transfert-multiple') ?>" class="btn btn-outline-info w-100 py-3">
+            <i class="bi bi-send-plus d-block fs-3 mb-1"></i>Envoi multiple
+        </a>
+    </div>
+    <div class="col-6 col-md-3">
         <a href="<?= site_url('client/historique') ?>" class="btn btn-outline-secondary w-100 py-3">
             <i class="bi bi-clock-history d-block fs-3 mb-1"></i>Historique
         </a>

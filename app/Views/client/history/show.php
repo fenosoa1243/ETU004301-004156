@@ -30,6 +30,24 @@
                     <th class="text-muted">Frais</th>
                     <td><?= format_money((float) $operation['frais']) ?></td>
                 </tr>
+                <?php if ((float) ($operation['frais_retrait'] ?? 0) > 0): ?>
+                <tr>
+                    <th class="text-muted">Frais de retrait inclus</th>
+                    <td><?= format_money((float) $operation['frais_retrait']) ?></td>
+                </tr>
+                <?php endif; ?>
+                <?php if ((float) ($operation['commission_supplementaire'] ?? 0) > 0): ?>
+                <tr>
+                    <th class="text-muted">Commission supplémentaire</th>
+                    <td><?= format_money((float) $operation['commission_supplementaire']) ?></td>
+                </tr>
+                <?php endif; ?>
+                <?php if (! empty($operation['batch_reference'])): ?>
+                <tr>
+                    <th class="text-muted">Référence du lot (envoi multiple)</th>
+                    <td class="font-monospace"><?= esc($operation['batch_reference']) ?></td>
+                </tr>
+                <?php endif; ?>
                 <tr>
                     <th class="text-muted">Montant total</th>
                     <td class="fw-bold"><?= format_money((float) $operation['montant_total']) ?></td>

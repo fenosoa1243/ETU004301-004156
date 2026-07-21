@@ -7,7 +7,6 @@
     </span>
     <div class="d-flex justify-content-between align-items-center w-100">
         <div class="d-flex align-items-center gap-3">
-            </span>
             <a href="<?= site_url('client/logout') ?>" class="btn btn-sm btn-outline-secondary">
                 <i class="bi bi-box-arrow-right me-1"></i> Déconnexion
             </a>

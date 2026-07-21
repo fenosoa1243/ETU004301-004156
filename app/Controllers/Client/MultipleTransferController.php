@@ -5,7 +5,6 @@ namespace App\Controllers\Client;
 use App\Controllers\BaseController;
 use App\Models\ClientModel;
 use App\Services\MultipleTransferService;
-use App\Validation\MultipleTransferRules;
 use RuntimeException;
 
 class MultipleTransferController extends BaseController
@@ -98,12 +97,6 @@ class MultipleTransferController extends BaseController
                 'required' => 'Le montant par bénéficiaire est obligatoire.',
             ],
         ];
-
-        // Charger les règles personnalisées
-        $this->validator->setRule('beneficiaires', 'beneficiaires', [
-            new \App\Validation\MultipleTransferRules(),
-            'validate_beneficiaires_list',
-        ]);
 
         if (!$this->validate($rules, $messages)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
